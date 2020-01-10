@@ -16,12 +16,10 @@ namespace SportsStore.Controllers
             _cart = cartService;
         }
 
-        [Authorize]
         public ViewResult List() =>
             View(_repository.Orders.Where(o => !o.Shipped));
 
         [HttpPost]
-        [Authorize]
         public IActionResult MarkShipped(int orderID)
         {
             Order order = _repository.Orders
