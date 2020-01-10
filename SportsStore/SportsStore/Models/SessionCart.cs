@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using SportsStore.Infrastructure;
+using System;
 
 namespace SportsStore.Models
 {

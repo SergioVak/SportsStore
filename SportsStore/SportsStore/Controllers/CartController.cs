@@ -1,9 +1,7 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using SportsStore.Infrastructure;
+﻿using Microsoft.AspNetCore.Mvc;
 using SportsStore.Models;
 using SportsStore.Models.ViewModels;
+using System.Linq;
 
 namespace SportsStore.Controllers
 {

@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System.Linq;
 
 namespace SportsStore.Models
 {
