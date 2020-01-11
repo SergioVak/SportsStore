@@ -11,9 +11,9 @@ namespace SportsStore.Controllers
 
         public int PageSize = 4;
 
-        public ProductController(IProductRepository repo)
+        public ProductController(IProductRepository repository)
         {
-            _repository = repo;
+            _repository = repository;
         }
 
         public ViewResult List(string category, int productPage = 1)

@@ -8,9 +8,9 @@ namespace SportsStore.Controllers
     {
         private IProductRepository _repository;
 
-        public AdminController(IProductRepository repo)
+        public AdminController(IProductRepository repository)
         {
-            _repository = repo;
+            _repository = repository;
         }
 
         public ViewResult Index() => View(_repository.Products);
@@ -31,7 +31,6 @@ namespace SportsStore.Controllers
             }
             else
             {
-                // there is something wrong with the data values
                 return View(product);
             }
         }
@@ -42,6 +41,7 @@ namespace SportsStore.Controllers
         public IActionResult Delete(int productId)
         {
             Product deletedProduct = _repository.DeleteProduct(productId);
+
             if (deletedProduct != null)
             {
                 TempData["message"] = $"{deletedProduct.Name} was deleted";

@@ -9,9 +9,9 @@ namespace SportsStore.Components
     {
         private IProductRepository _repository;
 
-        public NavigationMenuViewComponent(IProductRepository repo)
+        public NavigationMenuViewComponent(IProductRepository repository)
         {
-            _repository = repo;
+            _repository = repository;
         }
 
         public IViewComponentResult Invoke()

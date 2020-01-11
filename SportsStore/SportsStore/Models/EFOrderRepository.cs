@@ -7,9 +7,9 @@ namespace SportsStore.Models
     {
         private ApplicationDbContext _context;
 
-        public EFOrderRepository(ApplicationDbContext ctx)
+        public EFOrderRepository(ApplicationDbContext context)
         {
-            _context = ctx;
+            _context = context;
         }
 
         public IQueryable<Order> Orders => _context.Orders

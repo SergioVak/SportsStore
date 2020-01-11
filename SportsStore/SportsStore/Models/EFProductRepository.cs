@@ -6,9 +6,9 @@ namespace SportsStore.Models
     {
         private ApplicationDbContext _context;
 
-        public EFProductRepository(ApplicationDbContext ctx)
+        public EFProductRepository(ApplicationDbContext context)
         {
-            _context = ctx;
+            _context = context;
         }
 
         public IQueryable<Product> Products => _context.Products;
@@ -23,6 +23,7 @@ namespace SportsStore.Models
             {
                 Product dbEntry = _context.Products
                     .FirstOrDefault(p => p.ProductID == product.ProductID);
+
                 if (dbEntry != null)
                 {
                     dbEntry.Name = product.Name;
@@ -39,6 +40,7 @@ namespace SportsStore.Models
         {
             Product dbEntry = _context.Products
                 .FirstOrDefault(p => p.ProductID == productID);
+
             if (dbEntry != null)
             {
                 _context.Products.Remove(dbEntry);
