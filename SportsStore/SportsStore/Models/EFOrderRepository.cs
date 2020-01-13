@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace SportsStore.Models
 {
-    public class EFOrderRepository : IOrderRepository
+    public class EFOrderRepository : EFGenericRepository<Order>, IOrderRepository
     {
         private ApplicationDbContext _context;
 
-        public EFOrderRepository(ApplicationDbContext context)
+        public EFOrderRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }

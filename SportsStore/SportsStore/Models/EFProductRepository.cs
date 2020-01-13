@@ -2,11 +2,11 @@
 
 namespace SportsStore.Models
 {
-    public class EFProductRepository : IProductRepository
+    public class EFProductRepository : EFGenericRepository<Product>, IProductRepository
     {
         private ApplicationDbContext _context;
 
-        public EFProductRepository(ApplicationDbContext context)
+        public EFProductRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }
@@ -47,7 +47,7 @@ namespace SportsStore.Models
                 _context.SaveChanges();
             }
 
-            return dbEntry;
+            return dbEntry;  
         }
     }
 }
