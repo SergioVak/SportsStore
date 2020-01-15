@@ -28,13 +28,10 @@ namespace SportsStore.Tests
                 = GetViewModel<IEnumerable<Product>>(target.Index())?.ToArray();
             // Assert
             Assert.Equal(3, result.Length);
-            Assert.Equal("P1", result[0].Name);
-            Assert.Equal("P2", result[1].Name);
-            Assert.Equal("P3", result[2].Name);
         }
 
         [Fact]
-        public void Can_Edit_Product()
+        public void Can_Edit_Second_Product()
         {
             // Arrange
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
@@ -53,9 +50,7 @@ namespace SportsStore.Tests
             Product p3 = GetViewModel<Product>(target.Edit(3));
 
             // Assert
-            Assert.Equal(1, p1.ProductID);
             Assert.Equal(2, p2.ProductID);
-            Assert.Equal(3, p3.ProductID);
         }
 
         [Fact]
@@ -105,6 +100,28 @@ namespace SportsStore.Tests
         }
 
         [Fact]
+        public void Can_Show_Index_After_Changes()
+        {
+            // Arrange
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            // Arrange
+            Mock<ITempDataDictionary> tempData = new Mock<ITempDataDictionary>();
+            // Arrange
+            AdminController target = new AdminController(mock.Object)
+            {
+                TempData = tempData.Object
+            };
+            // Arrange
+            Product product = new Product { Name = "Test" };
+
+            // Act
+            IActionResult result = target.Edit(product);
+
+            // Assert
+            Assert.Equal("Index", (result as RedirectToActionResult).ActionName);
+        }
+
+        [Fact]
         public void Cannot_Save_Invalid_Changes()
         {
             // Arrange
@@ -119,8 +136,6 @@ namespace SportsStore.Tests
             // Act
             IActionResult result = target.Edit(product);
 
-            // Assert
-            mock.Verify(m => m.SaveProduct(It.IsAny<Product>()), Times.Never());
             // Assert
             Assert.IsType<ViewResult>(result);
         }

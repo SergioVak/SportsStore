@@ -7,7 +7,7 @@ namespace SportsStore.Tests
     public class CartTests
     {
         [Fact]
-        public void Can_Add_New_Lines()
+        public void Count_Of_Added_Lines_Is_2()
         {
             //Организация
             Product p1 = new Product { ProductID = 1, Name = "P1" };
@@ -22,8 +22,6 @@ namespace SportsStore.Tests
 
             //Утверждение
             Assert.Equal(2, results.Length);
-            Assert.Equal(p1, results[0].Product);
-            Assert.Equal(p2, results[1].Product);
         }
 
         [Fact]
@@ -37,14 +35,11 @@ namespace SportsStore.Tests
 
             //Действие
             target.Additem(p1, 1);
-            target.Additem(p2, 1);
             target.Additem(p1, 10);
             CartLine[] results = target.Lines.OrderBy(c => c.Product.ProductID).ToArray();
 
             //Утверждение
-            Assert.Equal(2, results.Length);
             Assert.Equal(11, results[0].Quantity);
-            Assert.Equal(1, results[1].Quantity);
         }
 
         [Fact]
@@ -66,7 +61,6 @@ namespace SportsStore.Tests
             target.RemoveLine(p2);
 
             //Утверждение
-            Assert.Equal(0, target.Lines.Where(c => c.Product == p2).Count());
             Assert.Equal(2, target.Lines.Count());
         }
 
